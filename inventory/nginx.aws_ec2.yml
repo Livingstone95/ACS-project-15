@@ -1,0 +1,16 @@
+---
+plugin: amazon.aws.aws_ec2
+cache: yes
+cache_plugin: ansible.builtin.jsonfile
+cache_timeout: 7200
+cache_connection: /tmp/aws_inventory
+cache_prefix: aws_ec2
+strict: False
+boto_profile: aws_profile
+regions:
+  - eu-central-1
+keyed_groups:
+  # add hosts to tag_Name_value groups for each aws_ec2 host's tags.Name variable
+  - key: tags.Name
+    prefix: tag_Name_nginx_david_prj_15
+    separator: ""
