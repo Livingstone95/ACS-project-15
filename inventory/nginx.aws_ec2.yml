@@ -1,13 +1,18 @@
 ---
 plugin: amazon.aws.aws_ec2
 
-boto_profile: aws_profile
-
 regions:
-  - eu-central-1
-  
+  - "eu-central-1"
+
+strict: False
+
 keyed_groups:
-  # add hosts to tag_Name_value groups for each aws_ec2 host's tags.Name variable
   - key: tags.Name
-    prefix: tag_nginx_david_prj_15
-    separator: ""
+  - key: tags.nginx_david_prj_15
+
+filters:
+  instance-state-name : running
+compose:
+  ansible_host: private_ip_address
+
+ansible_ssh_private_key_file: /home/ec2-user/.ssh/id_rsa

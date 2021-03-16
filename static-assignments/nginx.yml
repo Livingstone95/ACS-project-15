@@ -1,5 +1,5 @@
 ---
-- hosts: tag_Name_nginx_david_prj_15
+- hosts: all
   become: true
   roles:
      - nginx
